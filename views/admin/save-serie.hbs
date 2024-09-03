@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-12 col-sm-6 offset-sm-3">
+
+    <div class="card">
+      <div class="card-header bg-primary text-light">
+        Formulario de Serie
+      </div>
+      <div class="card-body">
+
+        <form method="POST" action="/admin/{{#if editMode}}edit-serie{{else}}add-serie{{/if}}">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" {{#if editMode}} value="{{serie.title}}" {{/if}} class="form-control" id="title"
+              name="Title" />
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Image url:</label>
+            <input type="text" {{#if editMode}} value="{{serie.imageUrl}}" {{/if}} class="form-control" id="image"
+              name="Image" />
+          </div>
+          <div class="mb-3">
+            <label for="genre" class="form-label">Genre</label>
+            <select class="form-control" id="genre" name="Genre">
+              {{#each genres}}
+                <option {{#if editMode}} value="{{serie.genre}}" {{/if}}>{{this.title}}</option>
+              {{/each}}
+            </select>
+
+          </div>
+          <div class="mb-3">
+            <label for="video" class="form-label">Video url:</label>
+            <input type="text" class="form-control" id="video" name="Video" />
+            {{#if editMode}} {{serie.videoUrl}} {{/if}}
+            <p><em>Añadir el link embed</em></p>
+          </div>
+
+          {{#if editMode}}
+          <input type="hidden" value="{{serie.id}}" name="SerieId">
+          {{/if}}
+
+          <button type="submit" class="btn btn-primary float-end">Save</button>
+          <a href="/admin/series" class="btn btn-warning float-end me-2">Back to list</a>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,41 @@
+{{#if hasGenres}}
+
+  <h1>Genre list</h1>
+
+  <div class="row mt-2 mb-2">
+    <div class="col-12 col-sm-4">
+      <a href="/admin/add-genre" class="btn btn-success">+ Nuevo genero</a>
+    </div>
+  </div>
+
+  <div class="row">
+
+    {{#each genrs}}
+
+      <div class="col-12 col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <div class="mt-2">
+              <a href="/admin/edit-genre/{{this.id}}" class="btn btn-primary float-end">Edit</a>
+              <form method="post" action="/admin/genre-delete" class="form-delete">
+                <input type="hidden" value="{{this.id}}" name="GenreId" />
+                <button
+                  type="submit"
+                  class="btn btn-danger float-end me-2 delete-genre"
+                >Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {{/each}}
+
+  </div>
+
+{{else}}
+
+  <h1>No series found!</h1>
+
+{{/if}}

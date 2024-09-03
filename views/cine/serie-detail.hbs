@@ -1,0 +1,28 @@
+<div class="row mb-3">
+  <div class="col-12 col-sm-4">
+    <a href="/" class="btn btn-warning"> Back to home </a>
+  </div>
+</div>
+{{#if hasSeries}}
+
+<div class="row">
+
+  <div class="col-12 col-sm-4 mx-auto mb-5">
+    <div class="card">
+      <div class="card-body mx-auto">
+        <h5 class="card-title">{{serie.title}} - {{serie.genre}}</h5>
+      </div>
+      <img src="{{serie.imageUrl}}" class="card-img-top mb-2" alt="..." />
+      {{#if serie.videoUrl}}
+      <iframe src="{{serie.videoUrl}}" class="card-img mb-3" height="344" controls allowfullscreen></iframe>
+      {{/if}}
+    </div>
+  </div>
+
+</div>
+
+{{else}}
+
+<h1>serie not found!</h1>
+
+{{/if}}

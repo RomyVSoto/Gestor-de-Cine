@@ -1,0 +1,48 @@
+<div class="d-flex">
+  <form action="/search" method="GET">
+  <div class="input-group mb-3 mx-2">
+    <input type="text" class="form-control" name="title" placeholder="Buscar por nombre" aria-label="Buscar por nombre"
+      aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+  </div>
+</form>
+
+<form action="/filter" method="GET">
+  <div class="input-group mb-3 mx-3">
+    <select class="form-select" name="genre" aria-label="Filtrar por genero">
+      <option selected>Seleccione un genero</option>
+      {{#each genres}}
+      <option value="{{this.title}}">{{this.title}}</option>
+      {{/each}}
+    </select>
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Filtrar</button>
+  </div>
+</form>
+</div>
+
+{{#if hasSeries}}
+
+<h1>Serie list</h1>
+
+<div class="row">
+
+  {{#each series}}
+
+  <div class="col-12 col-sm-4 mb-4">
+    <div class="card">
+      <img src="{{this.imageUrl}}" class="card-img-top img-size" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}} - {{this.genre}}</h5>
+        <a href="/serie-detail/{{this.id}}" class="btn btn-primary">Details</a>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+</div>
+
+{{else}}
+
+<h1>No series found!</h1>
+
+{{/if}}

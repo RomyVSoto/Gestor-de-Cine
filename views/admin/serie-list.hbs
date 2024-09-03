@@ -1,0 +1,41 @@
+{{#if hasSeries}}
+
+<h1>Serie list</h1>
+
+<div class="row mt-2 mb-2">
+  <div class="col-12 col-sm-4">
+    <a href="/admin/add-serie" class="btn btn-success">+ Nueva Serie</a>
+  </div>
+
+</div>
+
+<div class="row">
+
+  {{#each sers}}
+
+  <div class="col-12 col-sm-4">
+    <div class="card">
+      <img src="{{this.imageUrl}}" class="card-img-top img-size" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}} - {{this.genre}}</h5>
+        <div class="mt-2">
+          <a href="/admin/edit-serie/{{this.id}}" class="btn btn-primary float-end">Edit</a>
+          <form method="post" action="/admin/serie-delete" class="form-delete">
+            <input type="hidden" value="{{this.id}}" name="SerieId" />
+            <button type="submit" class="btn btn-danger float-end me-2 delete-serie">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{/each}}
+
+</div>
+
+
+{{else}}
+
+<h1>No series found!</h1>
+
+{{/if}}
